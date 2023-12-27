@@ -1,0 +1,24 @@
+database:
+    products:
+        -product_id
+        -name
+        -price
+        -quantity
+        -img url
+        -descriptiom
+        
+    orders:
+        -order_id
+        -customer_email
+        -order_date
+        -total_amount
+
+    order_items:
+        -order_item_id
+        -order_id
+        -product_id
+        -quantity
+        -price
+
+
+
