@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import Home from './pages/Home';
 import Checkout from './pages/Checkout';
 import Cart from './pages/Cart';
+import Products from './pages/Product-List';
+import Product from './pages/Product'
 
 function App() {
 
@@ -13,6 +15,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path='/product-list' element={<Products />} />
+          <Route path='/product' element={<Product />} />
         </Routes>
       </Router>
     </>
