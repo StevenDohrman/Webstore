@@ -1,20 +1,20 @@
-import { useState, useEffect } from 'react'
-import './App.css'
-import axios from 'axios'
+import './App.css';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Home from './pages/Home';
+import Checkout from './pages/Checkout';
+import Cart from './pages/Cart';
 
 function App() {
 
-  const getProducts = async () => {
-    const response = await axios.get('http://127.0.0.1:8000/api/list-products/')
-    console.log(response.data.products)
-  }
-
-  useEffect(() => {
-    getProducts()
-  }, [])
   return (
     <>
-      
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </Router>
     </>
   )
 }
