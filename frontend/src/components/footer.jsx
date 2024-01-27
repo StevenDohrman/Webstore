@@ -1,12 +1,12 @@
 const footerNavigation = {
     shop: [
-      { name: 'Polyurethane', href: '#' },
-      { name: 'Epoxy', href: '#' },
-      { name: 'Accessories', href: '#' },
+      { name: 'Polyurethane', href: '/product-list' },
+      { name: 'Epoxy', href: '/product-list' },
+      { name: 'Accessories', href: '/product-list' },
     ],
     company: [
       { name: 'About Us', href: '#' },
-      { name: 'Reviews', href: '#' },
+      { name: 'Reviews', href: '/review' },
       { name: 'Terms & Conditions', href: '#' },
       { name: 'Privacy', href: '#' },
     ],
@@ -15,7 +15,7 @@ const footerNavigation = {
       { name: 'Returns & Exchanges', href: '#' },
     ],
     connect: [
-      { name: 'Contact Us', href: '#' },
+      { name: 'Contact Us', href: '/contact' },
       { name: 'Twitter', href: '#' },
       { name: 'Instagram', href: '#' },
       { name: 'Facebook', href: '#' },

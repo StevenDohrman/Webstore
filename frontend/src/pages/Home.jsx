@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState, } from 'react'
 import Footer from '../components/footer'
 import NavBar from '../components/navigation'
 
@@ -80,7 +80,7 @@ export default function Example() {
             while they're still in stock.
           </p>
           <a
-            href="#"
+            href="/product-list"
             className="mt-8 inline-block rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100"
           >
             Shop New Arrivals
@@ -160,7 +160,7 @@ export default function Example() {
                   Choose Epoxy Unlock. Create. Thrive.
                 </p>
                 <a
-                  href="#"
+                  href="/product-list"
                   className="mt-8 block w-full rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
                 >
                   Shop Products
