@@ -1,4 +1,6 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { getFromLocalStorage, saveToLocalStorage } from '../redux/utils/storageUtils';
 import '../App.css'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import {
@@ -17,9 +19,36 @@ const navigation = {
     ],
 }
 
-export default function NavBar () {
+export default function NavBar() {
+  const dispatch = useDispatch();
+  const userCart = useSelector((state) => state.cart.items);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  // Function to set initial user cart from local storage
+  const setInitialUserCart = () => {
+    const cartData = getFromLocalStorage('cart') || {};
+    const initialUserCart = cartData.items || [];
+
+    dispatch({
+      type: 'SET_USER_CART',
+      payload: initialUserCart,
+    });
+
+    console.log('Initial user cart set:', initialUserCart);
+  };
+
+  // Set initial user cart on component mount
+  useEffect(() => {
+    console.log('Setting initial user cart from local storage');
+    setInitialUserCart();
+  }, []);
+
+  // Log userCart when it changes
+  useEffect(() => {
+    console.log('Current user cart:', userCart);
+  }, [userCart]);
+  
+  const totalQuantityInCart = userCart.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <div>
@@ -128,16 +157,16 @@ export default function NavBar () {
                   <div className="flex flex-1 items-center justify-end">
                     
 
-                    <div className="flex items-center lg:ml-8">
-                      {/* Cart */}
-                      <div className="ml-4 flow-root lg:ml-8">
-                        <a href="/cart" className="group -m-2 flex items-center p-2">
-                          <ShoppingBagIcon className="h-6 w-6 flex-shrink-0 text-white" aria-hidden="true" />
-                          <span className="ml-2 text-sm font-medium text-white">0</span>
-                          <span className="sr-only">items in cart, view bag</span>
-                        </a>
-                      </div>
+                  <div className="flex items-center lg:ml-8">
+                    {/* Cart */}
+                    <div className="ml-4 flow-root lg:ml-8">
+                      <a href="/cart" className="group -m-2 flex items-center p-2">
+                        <ShoppingBagIcon className="h-6 w-6 flex-shrink-0 text-white" aria-hidden="true" />
+                        <span className="ml-2 text-sm font-medium text-white">{totalQuantityInCart}</span>
+                        <span className="sr-only">items in cart, view bag</span>
+                      </a>
                     </div>
+                  </div>
                   </div>
                 </div>
               </div>
