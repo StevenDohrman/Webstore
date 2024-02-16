@@ -14,7 +14,6 @@ function classNames(...classes) {
 export default function Cart() {
   const dispatch = useDispatch();
   const userCart = useSelector((state) => state.cart.items);
-  const [open, setOpen] = useState(false);
   const navigateTo = useNavigate();
 
   const navigateToCheckout = () => {
@@ -49,7 +48,7 @@ export default function Cart() {
     return total + product.price * product.quantity;
   }, 0);
 
-  const taxRate = 0.0832; // Example tax rate (8.32%)
+  const taxRate = 0.0832; 
   const tax = subtotal * taxRate;
   const orderTotal = subtotal + shippingEstimate + tax;
 

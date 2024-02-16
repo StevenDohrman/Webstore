@@ -24,7 +24,6 @@ export default function NavBar() {
   const userCart = useSelector((state) => state.cart.items);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Function to set initial user cart from local storage
   const setInitialUserCart = () => {
     const cartData = getFromLocalStorage('cart') || {};
     const initialUserCart = cartData.items || [];
@@ -37,13 +36,11 @@ export default function NavBar() {
     console.log('Initial user cart set:', initialUserCart);
   };
 
-  // Set initial user cart on component mount
   useEffect(() => {
     console.log('Setting initial user cart from local storage');
     setInitialUserCart();
   }, []);
 
-  // Log userCart when it changes
   useEffect(() => {
     console.log('Current user cart:', userCart);
   }, [userCart]);
